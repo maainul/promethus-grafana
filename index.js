@@ -1,5 +1,5 @@
 const express = require("express")
-
+require('dotenv').config();
 const app = express()
 
 app.get("/",async(req,res)=>{
@@ -39,6 +39,7 @@ async function doSomeHeavyTask() {
     }
 }
 
-app.listen(8000,()=>{
-    console.log(`Server running on PORT = 8000. `)
+const PORT = process.env.PORT || 8000;
+app.listen(PORT,()=>{
+    console.log(`Server running on PORT = ${PORT}. `)
 })
