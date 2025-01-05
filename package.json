@@ -1,16 +1,26 @@
 {
   "name": "test-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A sample Node.js application demonstrating Docker setup and heavy task simulation.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"No tests defined yet!\" && exit 0"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "express",
+    "docker",
+    "sample-app"
+  ],
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
