@@ -16,13 +16,12 @@ pipeline {
                 echo "Docker image built successfully!"
             }
         }
-         stage('Clean Up') {
+        stage('Clean Up') {
             steps {
                 echo "Cleaning up dangling images..."
                 sh 'docker image prune -f'
             }
         }
-       
         stage('Deploy') {
             steps {
                 echo "Stopping and removing existing containers..."
