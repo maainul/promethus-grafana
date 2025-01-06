@@ -5,6 +5,9 @@ require('dotenv').config();
 
 const app = express()
 
+// Default Metrics Collection
+client.collectDefaultMetrics({ register: client.register });
+
 
 app.get("/",async(req,res)=>{
     return res.json({
@@ -43,13 +46,13 @@ async function doSomeHeavyTask() {
     }
 }
 
-client.collectDefaultMetrics({ register: client.register });
-app.get("/metrics",async (req,res)=>{
-    res.setHeader("Content-Type",client.register.contentType)
-    const metrics = await client.register.metrics();
-    res.send(metrics)
-  })
 
+// Metrics Endpoint for Prometheus
+app.get("/metrics", async (req, res) => {
+    res.setHeader("Content-Type", client.register.contentType);
+    const metrics = await client.register.metrics();
+    res.send(metrics);
+  })
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT,()=>{
