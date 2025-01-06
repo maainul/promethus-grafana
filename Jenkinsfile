@@ -16,6 +16,12 @@ pipeline {
                 echo "Docker image built successfully!"
             }
         }
+         stage('Clean Up') {
+            steps {
+                echo "Cleaning up dangling images..."
+                sh 'docker image prune -f'
+            }
+        }
        
         stage('Deploy') {
             steps {
@@ -31,12 +37,5 @@ pipeline {
                 sh 'docker compose up -d'
             }
         }
-        stage('Clean Up') {
-            steps {
-                echo "Cleaning up dangling images..."
-                sh 'docker image prune -f'
-            }
-        }
-
     }
 }
