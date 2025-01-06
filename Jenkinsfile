@@ -30,6 +30,7 @@ pipeline {
                     docker ps -q | xargs -r docker stop
                     # Remove all stopped containers
                     docker ps -aq | xargs -r docker rm
+                    docker image prune -f
                 '''
                 echo "Existing containers stopped and removed."
                 echo "Deploying the application..."
