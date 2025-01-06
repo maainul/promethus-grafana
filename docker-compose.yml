@@ -1,5 +1,5 @@
 services:
-  web:
+  node-server:
     build:
       context: .
     image: "maainul/test-app:latest"
@@ -11,3 +11,7 @@ services:
       - 9090:9090
     volumes:
       - ./prometheus-config.yml:/etc/prometheus/prometheus-config.yml
+  grafana-server:
+    image: grafana/grafana-oss
+    ports:
+      - 3000:3000
