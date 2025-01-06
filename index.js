@@ -1,6 +1,10 @@
+const client = require("prom-client")
 const express = require("express")
 require('dotenv').config();
+
+
 const app = express()
+
 
 app.get("/",async(req,res)=>{
     return res.json({
@@ -38,6 +42,14 @@ async function doSomeHeavyTask() {
         throw new Error("Intentional error occurred during heavy task!");
     }
 }
+
+client.collectDefaultMetrics({ register: client.register });
+app.get("/metrics",async (req,res)=>{
+    res.setHeader("Content-Type",client.register.contentType)
+    const metrics = await client.register.metrics();
+    res.send(metrics)
+  })
+
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT,()=>{
