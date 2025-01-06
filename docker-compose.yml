@@ -2,7 +2,7 @@ services:
   node-server:
     build:
       context: .
-    image: "maainul/test-app:latest"
+    image: "test-app:latest"
     ports:
       - "8000:8000"
   prom-server:
@@ -10,7 +10,7 @@ services:
     ports:
       - 9090:9090
     volumes:
-      - ./prometheus-config.yml:/etc/prometheus/prometheus-config.yml
+      - ./prometheus-config.yml:/etc/prometheus/prometheus.yml
   grafana-server:
     image: grafana/grafana-oss
     ports:

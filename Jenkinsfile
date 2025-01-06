@@ -14,7 +14,7 @@ pipeline {
                 echo "Cleaning Up Docker Dangling image..."
                 sh 'docker image prune -f'
                 echo "Building the Docker image..."
-                sh 'docker build -t maainul/test-app:latest .'
+                sh 'docker build -t test-app:latest .'
                 echo "Docker image built successfully!"
             }
         }
