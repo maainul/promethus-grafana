@@ -11,8 +11,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo "Cleaning Up Docker Dangling image..."
-                sh 'docker image prune -f'
                 echo "Building the Docker image..."
                 sh 'docker build -t test-app:latest .'
                 echo "Docker image built successfully!"
@@ -33,5 +31,12 @@ pipeline {
                 sh 'docker compose up -d'
             }
         }
+        stage('Clean Up') {
+            steps {
+                echo "Cleaning up dangling images..."
+                sh 'docker image prune -f'
+            }
+        }
+
     }
 }
